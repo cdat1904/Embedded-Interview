@@ -2,34 +2,40 @@
 <details>
 
 <summary>COMPILER</summary>
-Compiler giống như 1 phần mềm dùng để chuyển ngôn ngữ bậc cao sang ngôn ngữ máy, đối với một ngôn ngữ lập trình (c/c++, python, java,...) thì có nhiều compiler.
+Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao sang ngôn ngữ đích (ngôn ngữ máy) để máy tính có thể hiểu và thực thi. Ngôn ngữ lập trình C++ là một ngôn ngữ dạng biên dịch. Chương trình được viết bằng C++ muốn chạy được trên máy tính phải trải qua một quá trình biên dịch để chuyển đổi từ dạng mã nguồn sang chương trình dạng mã thực thi. Quá trình được chia ra làm 4 giai đoạn chính:
     
-![image](https://tapit.vn/wp-content/uploads/2017/07/GCC_CompilationProcess.png)
+![image](https://codelearn.io/Media/Default/Users/Darksider/ssj/maxresdefault.jpg)
 	
-I. Định nghĩa
 	
-Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NNBC) (C/C++, Pascal, Java, C#…) sang ngôn ngữ đích (ngôn ngữ máy) để máy tính có thể hiểu và thực thi. Ngôn ngữ lập trình C là một ngôn ngữ dạng biên dịch. Chương trình được viết bằng C muốn chạy được trên máy tính phải trải qua một quá trình biên dịch để chuyển đổi từ dạng mã nguồn sang chương trình dạng mã thực thi. Quá trình được chia ra làm 4 giai đoạn chính:
-
-- Giai đoàn tiền xử lý (Pre-processor)
-- Giai đoạn dịch NNBC sang Asembly (Compiler)
-- Giai đoạn dịch asembly sang ngôn ngữ máy (Asember)
-- Giai đoạn liên kết (Linker)
-II. HOẠT ĐỘNG
+HOẠT ĐỘNG
 
 1. Giai đoạn tiền xử lý – Preprocessor
-Giai đoạn này sẽ thực hiện:
+Bộ tiền xử lý có nhiệm vụ thực hiện:
 
-Nhận mã nguồn. Xóa bỏ tất cả chú thích, comments của chương trình. Chỉ thị tiền xử lý (bắt đầu bằng #) cũng được xử lý.
+- Nhận mã nguồn
+- Xóa bỏ tất cả chú thích, comments của chương trình
+- Chỉ thị tiền xử lý (bắt đầu bằng #) cũng được xử lý
+Chúng ta có thể bắt lỗi ngay ở giai đoạn này với việc sử dụng một cách hợp lý các chỉ thị #if và #error. Bằng cách sử dụng option -E của trình biên dịch như bên dưới, chúng ta có thể dừng quá trình biên dịch ngay ở giai đoạn tiền xử lý nếu có lỗi ở giai đoạn này.
+
 Ví dụ: chỉ thị #include cho phép ghép thêm mã chương trình của một tệp tiêu để vào mã nguồn cần dịch. Các hằng số được định nghĩa bằng #define sẽ được thay thế bằng giá trị cụ thể tại mỗi nơi sử dụng trong chương trình.
+![image](https://codelearn.io/Media/Default/Users/Darksider/ssj/Screenshot%202020-09-22%20092248.png)
+	
+Sau khi thực hiện tiền xử lý
+	
+![image](https://codelearn.io/Media/Default/Users/Darksider/ssj/Screenshot%202020-09-22%20092317.png)
+	
 
-2. Cộng đoạn dịch Ngôn Ngữ Bậc Cao sang Assembly
+2. Compilation (biên dịch)
 
-Phân tích cú pháp (syntax) của mã nguồn NNBC. Chuyển chúng sang dạng mã Assembly là một ngôn ngữ bậc thấp (hợp ngữ) gần với tập lệnh của bộ vi xử lý.
+- Phân tích cú pháp (syntax) của mã nguồn NNBC.
+- Chuyển chúng sang dạng mã Assembly là một ngôn ngữ bậc thấp (hợp ngữ) gần với tập lệnh của bộ vi xử lý.
+
+![image](https://codelearn.io/Media/Default/Users/Darksider/ssj/Screenshot%202020-09-22%20094157.png)
 	
 3. Công đoạn dịch Assembly
 
-Dich chương trình => Sang mã máy 0 và 1
-Một tệp mã máy (.obj) sinh ra trong hệ thống sau đó.
+- Dich chương trình => Sang mã máy 0 và 1
+- Một tệp mã máy (.obj) sinh ra trong hệ thống sau đó.
 	
 4. Giai đoạn Linker
 
@@ -41,6 +47,7 @@ Chính vì vậy mà các lỗi liên quan đến việc gọi hàm hay sử d�
 
 <details>
 <summary>PHÂN VÙNG NHỚ</summary>
+	
 <img width="400" alt="image" src="https://i0.wp.com/media.geeksforgeeks.org/wp-content/uploads/memoryLayoutC.jpg?resize=449%2C343&ssl=1">
 
 ## Phân vùng Text:
