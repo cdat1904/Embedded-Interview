@@ -26,10 +26,12 @@ Ví dụ: chỉ thị #include cho phép ghép thêm mã chương trình của m
 
 Phân tích cú pháp (syntax) của mã nguồn NNBC
 Chuyển chúng sang dạng mã Assembly là một ngôn ngữ bậc thấp (hợp ngữ) gần với tập lệnh của bộ vi xử lý.
+	
 3. Công đoạn dịch Assembly
 
 Dich chương trình => Sang mã máy 0 và 1
 Một tệp mã máy (.obj) sinh ra trong hệ thống sau đó.
+	
 4. Giai đoạn Linker
 
 Trong giai đoạn này mã máy của một chương trình dịch từ nhiều nguồn (file .c hoặc file thư viện .lib) được liên kết lại với nhau để tạo thành chương trình đích duy nhất
