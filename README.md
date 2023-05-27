@@ -5,19 +5,42 @@
 Compiler giống như 1 phần mềm dùng để chuyển ngôn ngữ bậc cao sang ngôn ngữ máy, đối với một ngôn ngữ lập trình (c/c++, python, java,...) thì có nhiều compiler.
     
 ![image](https://tapit.vn/wp-content/uploads/2017/07/GCC_CompilationProcess.png)
-
+I. Định nghĩa
 Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NNBC) (C/C++, Pascal, Java, C#…) sang ngôn ngữ đích (ngôn ngữ máy) để máy tính có thể hiểu và thực thi. Ngôn ngữ lập trình C là một ngôn ngữ dạng biên dịch. Chương trình được viết bằng C muốn chạy được trên máy tính phải trải qua một quá trình biên dịch để chuyển đổi từ dạng mã nguồn sang chương trình dạng mã thực thi. Quá trình được chia ra làm 4 giai đoạn chính:
 
 - Giai đoàn tiền xử lý (Pre-processor)
 - Giai đoạn dịch NNBC sang Asembly (Compiler)
 - Giai đoạn dịch asembly sang ngôn ngữ máy (Asember)
 - Giai đoạn liên kết (Linker)
+II. HOẠT ĐỘNG
+
+1. Giai đoạn tiền xử lý – Preprocessor
+Giai đoạn này sẽ thực hiện:
+
+Nhận mã nguồn
+Xóa bỏ tất cả chú thích, comments của chương trình
+Chỉ thị tiền xử lý (bắt đầu bằng #) cũng được xử lý
+Ví dụ: chỉ thị #include cho phép ghép thêm mã chương trình của một tệp tiêu để vào mã nguồn cần dịch. Các hằng số được định nghĩa bằng #define sẽ được thay thế bằng giá trị cụ thể tại mỗi nơi sử dụng trong chương trình.
+
+2. Cộng đoạn dịch Ngôn Ngữ Bậc Cao sang Assembly
+
+Phân tích cú pháp (syntax) của mã nguồn NNBC
+Chuyển chúng sang dạng mã Assembly là một ngôn ngữ bậc thấp (hợp ngữ) gần với tập lệnh của bộ vi xử lý.
+3. Công đoạn dịch Assembly
+
+Dich chương trình => Sang mã máy 0 và 1
+Một tệp mã máy (.obj) sinh ra trong hệ thống sau đó.
+4. Giai đoạn Linker
+
+Trong giai đoạn này mã máy của một chương trình dịch từ nhiều nguồn (file .c hoặc file thư viện .lib) được liên kết lại với nhau để tạo thành chương trình đích duy nhất
+Mã máy của các hàm thư viện gọi trong chương trình cũng được đưa vào chương trình cuối trong giai đoạn này.
+Chính vì vậy mà các lỗi liên quan đến việc gọi hàm hay sử dụng biến tổng thể mà không tồn tại sẽ bị phát hiện. Kể cả lỗi viết chương trình chính không có hàm main() cũng được phát hiện trong liên kết.
     
 </details>
 
 <details>
 <summary>PHÂN VÙNG NHỚ</summary>
-<img width="169" alt="image" src="https://github.com/Kiet2024/Embedded_interview/assets/133784431/7b238944-eb43-4d35-a0dd-2e94ad70a421">
+<img width="400" alt="image" src="https://i0.wp.com/media.geeksforgeeks.org/wp-content/uploads/memoryLayoutC.jpg?resize=449%2C343&ssl=1">
 
 ## Phân vùng Text:
 - Quyền truy cập chỉ Read và nó chứa lệnh để thực thi nên tránh sửa đổi instruction.
@@ -131,7 +154,12 @@ Dia chi arr: 00AD2F20
 Dia chi arr: 00AD2F20
 */
 ```
-    
+## Sự khác nhau giữa bộ nhớ Heap và bộ nhớ Stack :
+- Bộ nhớ Heap và bộ nhớ Stack bản chất đều cùng là vùng nhớ được tạo ra và lưu trữ trong RAM khi chương trình được thực thi.
+- Bộ nhớ Stack được dùng để lưu trữ các biến cục bộ trong hàm, tham số truyền vào... Truy cập vào bộ nhớ này rất nhanh và được thực thi khi chương trình được biên dịch
+- Vùng nhớ Stack được quản lý bởi hệ điều hành, dữ liệu được lưu trong Stack sẽ tự động hủy khi hàm thực hiện xong công việc của mình.
+- Bộ nhớ Heap được dùng để lưu trữ vùng nhớ cho những biến con trỏ được cấp phát động bởi các hàm malloc - calloc - realloc (trong C).
+- Nếu bạn liên tục cấp phát vùng nhớ mà không giải phóng thì sẽ bị lỗi tràn vùng nhớ Heap (Heap overflow).
 </details>
     
  <details>
@@ -141,6 +169,9 @@ Dia chi arr: 00AD2F20
  - Macro không phải là hàm, cũng không phải là biến mà nó chỉ là 1 định nghĩa.
  - Macro được diễn ra ở quá trình tiền xử lý (preprocessor).
  - Thay thế định nghĩa macro vào đoạn code đã gọi.
+ - VD: #define SUM(a,b)     (a+b)
+       - Preprocessor khi gặp bất kỳ lời gọi SUM(first+last) nào thì thay ngay bằng (first+last)
+
      
  **VD1:**
  ```
@@ -208,7 +239,7 @@ Sau khi PC chạy xong hàm A, lúc này nó sẽ vào Stack Pointer để lấy
     
     
 <details>
-<summary>TOÁN TỬ BITWISE</summary>
+<summary>TOÁN TỬ  / THAO TÁC BIT</summary>
     
  ## Toán tử AND
  <img width="173" alt="image" src="https://github.com/Kiet2024/Embedded_interview/assets/133784431/131b91c7-7404-42a1-89d4-00713f196a51">
@@ -222,11 +253,9 @@ Sau khi PC chạy xong hàm A, lúc này nó sẽ vào Stack Pointer để lấy
  ## Toán tử XOR
  <img width="175" alt="image" src="https://github.com/Kiet2024/Embedded_interview/assets/133784431/28c77307-f094-4afa-b52e-925be353be09">
     
-</details>
 
-<details>
-<summary>THAO TÁC BIT</summary>
 
+##
 <img width="355" alt="image" src="https://github.com/Kiet2024/Embedded_interview/assets/133784431/02e222c1-e668-4939-a6ea-dd05e7eb746e">
 
 Dịch trái (<<) 4 bit là bỏ đi 4 bit bên trái(ở đầu) và thêm 4 bit 0 vào bên phải(ở cuối)
@@ -249,13 +278,23 @@ printf("%s",(((bit & (1<<2)) !=0)?"true":"false"));
 </details>   
  
 <details>
-<summary>TYPEDEF</summary>
+<summary>TYPEDEF & ENUM</summary>
     
 Typedef được sử dụng để tạo tên mới cho kiểu dữ liệu. 
 ```
 typedef uint8_t u8;
 u8 x = 10; // u8 bản chất nó là kiểu uint8_t
  ```
+Enum là 1 kiểu dữ liệu người dùng tự định nghĩa. Dùng để gán tên cho các hằng số. Được sử dụng để bạn có thể kiểm soát các hằng số không muốn bị nhầm lẫn trong quá trình sử dụng. Được sử dụng để định nghĩa các mã lỗi, các mã trả về, các biến hằng cần kiểm soát…
+```
+    typedef enum {
+GiaTri1, 
+GiaTri2, 
+GiaTri3,
+…, 
+GiaTriN
+} TenEnum;
+```
 </details>
     
     
