@@ -241,18 +241,51 @@ Sau khi PC chạy xong hàm A, lúc này nó sẽ vào Stack Pointer để lấy
 <details>
 <summary>TOÁN TỬ  / THAO TÁC BIT</summary>
     
- ## Toán tử AND
- <img width="173" alt="image" src="https://github.com/Kiet2024/Embedded_interview/assets/133784431/131b91c7-7404-42a1-89d4-00713f196a51">
-
- ## Toán tử OR
- <img width="173" alt="image" src="https://github.com/Kiet2024/Embedded_interview/assets/133784431/e2779fd1-8884-4ab2-b2e9-fdaa875e1139">
- 
- ## Toán tử NOT
- <img width="85" alt="image" src="https://github.com/Kiet2024/Embedded_interview/assets/133784431/0d2bc1fd-1d6e-4067-8745-37b6efbd4714">
-
- ## Toán tử XOR
- <img width="175" alt="image" src="https://github.com/Kiet2024/Embedded_interview/assets/133784431/28c77307-f094-4afa-b52e-925be353be09">
-    
+- AND (Biểu thức AND): Ký hiệu: `&`.
+	| A | B | A & B |
+  	|---|---|:---:|
+  	|0|0|  0|
+  	|0|1|  0|
+  	|1|0|  0|
+  	|1|1|  1|
+    ```c
+    unsigned int a = 9;  
+	unsigned int b = 8;  
+    unsigned int result = a & b;  
+	```
+ - OR (Biểu thức OR): Ký hiệu: `|`.
+	| A | B | A \| B |
+  	|---|---|:---:|
+  	|0|0|  0|
+  	|0|1|  1|
+  	|1|0|  1|
+  	|1|1|  1|
+    ```c
+    unsigned int a = 5;  // 0101
+	unsigned int b = 3;  // 0011
+	unsigned int result = a | b;  // 0111
+    ```
+- XOR (Biểu thức XOR): Ký hiệu: `^`.
+	| A | B | A ^ B |
+  	|---|---|:---:|
+  	|0|0|  0|
+  	|0|1|  1|
+  	|1|0|  1|
+  	|1|1|  0|
+    ```c
+    unsigned int a = 5;  // 0101
+	unsigned int b = 3;  // 0011
+	unsigned int result = a ^ b;  // 0110
+    ```
+- NOT (Biểu thức NOT): Ký hiệu: `~`, thực hiện phép NOT bit, đảo ngược tất cả các bit của số.
+	| A | ~ A |
+  	|--|:---:|
+  	|0|  1|
+  	|1|  0|
+    ```c
+    unsigned int a = 5;  // 0101
+	unsigned int result = ~a;  // 1010 (đảo ngược các bit)
+    ```
 
 
 ##
