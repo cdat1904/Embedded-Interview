@@ -587,9 +587,9 @@ int main()
 
     // void (*pheptoan)(int, int) = NULL;
     // pheptoan = thuong;
-    // pheptoan(5,9);
+    // pheptoan(5,1);
 
-    tinhtoan(8,9,hieu);
+    tinhtoan(8,6,thuong);
     return 0;
 }
     
@@ -607,8 +607,8 @@ void tong(int a,int b){
 int main()
 {
 
-    int i = 30;
-    double d =15.6;
+    int i = 3;
+    double d =12.4;
     char c ='B';
 
     // con trỏ void có thể trỏ đến bất kỳ địa chỉ nào 
@@ -624,7 +624,7 @@ int main()
     printf("c = %c\n",*(char *)ptr);
 
     ptr = &tong;
-    ((void (*)(int, int))ptr)(9,16);
+    ((void (*)(int, int))ptr)(9,1);
     return 0;
 }
     
@@ -650,7 +650,7 @@ int **d_ptr = &ptr; // con trỏ tới một con trỏ được khai báo
  
 int main()
 {
-    int var = 789;
+    int var = 123;
  
     int* ptr2;
  
@@ -668,9 +668,9 @@ int main()
     
     /*
      Result : 
-        Gia tri var = 789
-        Gia tri *pointer = 789
-        Gia tri **pointer = 789
+        Gia tri var = 123
+        Gia tri *pointer = 123
+        Gia tri **pointer = 123
     */
 }
  ```
