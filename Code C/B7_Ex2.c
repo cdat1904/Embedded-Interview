@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdint.h>
 
+
+// Đảo chiều một mảng bất kỳ
 void reverse(char array[],int size)
 {
     for (int i = size; i >= 0; i--) {
