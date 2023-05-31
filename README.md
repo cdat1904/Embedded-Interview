@@ -343,6 +343,60 @@ GiaTriN
 <summary>STRUCT - UNION</summary>
  
 ## Struct
+###Định nghĩa
+struct là 1 tập hợp các phần tử dữ liệu cùng kiểu hoặc khác kiểu được gộp chung thành 1 nhóm. Các phần tử này được gọi là thành viên của struct.
+###Cú pháp
+```
+struct <Tên struct>
+{
+<Kiểu dữ liệu thành viên số 1> <Tên thành viên số 1>;
+<Kiểu dữ liệu thành viên số 2> <Tên thành viên số 2>;
+…
+};
+```
+###Sử dụng Struct
+- Để truy cập vào các thành viên của struct sử dụng toán tử dấu chấm (.) đặt giữa tên biến kiểu struct và tên thành viên của struct cần truy cập.
+
+- 1 biến thuộc kiểu struct cũng có thể trở thành tham số của 1 hàm.
+
+- Có thể truy cập thành phần của struct thông qua biến con trỏ.
+```
+#include <iostream>
+#include <string>
+using namespace std;
+
+/*Declare a struct called Subject*/
+struct Subject
+{
+	string	m_name_subject;			//delare member types
+	string	m_pre_subject;
+	int		m_hour_per_week;
+	string	m_trainer;
+};
+
+void PrintSubjectInformation(Subject object)
+{
+	cout << object.m_name_subject		<< endl;
+	cout << object.m_trainer		<< endl;
+	cout << object.m_hour_per_week	<< endl;
+	cout << object.m_pre_subject		<< endl;
+}
+
+int main()
+{
+	Subject subject;
+
+	// Access the member of struct Subject through subject
+	subject.m_name_subject	= "Game Programming";
+	subject.m_pre_subject	= "Basic Programming";
+	subject.m_hour_per_week = 4;
+	subject.m_trainer		= "Vu Quang Huy";
+
+	PrintSubjectInformation(subject);
+
+	return 0;
+}
+```
  ### Size của Struct
  ```
  // Chương trình tính size của  1 struct
@@ -423,6 +477,17 @@ uint16_t có size 2 byte => arr3[7] cần 2*7 = 14 byte để lưu
 ==> tổng size = 12 byte + 16 byte + 16 byte = 44 byte
 
 ## Union  
+###Định nghĩa
+Cũng giống như struct, union là 1 tập hợp các phần tử dữ liệu cùng kiểu hoặc khác kiểu được gộp chung thành 1 nhóm. Các phần tử này được gọi là thành viên của union.
+###Cú pháp
+```
+union <Tên struct>
+{
+<Kiểu dữ liệu thành viên số 1> <Tên thành viên số 1>;
+<Kiểu dữ liệu thành viên số 2> <Tên thành viên số 2>;
+…
+};
+```
  ```
 typedef union
 {
@@ -434,6 +499,44 @@ typedef union
     uint8_t test2[2]; // 2 byte
 }data_union;
  ```
+###Sử dụng Union
+- Để truy cập vào các thành viên của union sử dụng toán tử dấu chấm (.) đặt giữa tên biến kiểu union và tên thành viên của union cần truy cập.
+
+- 1 biến thuộc kiểu union cũng có thể trở thành tham số của 1 hàm.
+
+- Có thể truy cập thành viên của union thông qua biến con trỏ.
+```
+#include <iostream>
+
+using namespace std;
+
+/* Declare */
+union Post
+{
+	int		m_iValue;
+	float		m_fValue;			//delare member types
+	long		m_lValue;
+};
+
+void PrintSubjectInformation(Post post)
+{
+	cout << post.m_iValue	<< endl;
+	cout << post.m_fValue	<< endl;
+	cout << post.m_lValue	<< endl;
+}
+
+int main()
+{
+	Post post;
+	post.m_iValue		= 169;			// Access the member of union
+	post.m_fValue		= 39.01;
+	post.m_lValue		= 123;
+
+	PrintSubjectInformation(post);
+
+	return 0;
+}
+```
 ## So sánh Struct - Union
 Về mặt ý nghĩa, struct và union cơ bản giống nhau. Tuy nhiên, về mặt lưu trữ trong bộ nhớ, chúng có sự khác biệt rõ rệt như sau:
 - Struct: Dữ liệu của các thành viên của struct được lưu trữ ở những vùng nhớ khác nhau. Do đó kích thước của 1 struct tối thiểu bằng kích thước các thành viên cộng lại tại vì còn phụ thuộc vào bộ nhớ đệm (struct padding).
