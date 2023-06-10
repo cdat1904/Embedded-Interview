@@ -343,9 +343,10 @@ GiaTriN
 <summary>STRUCT - UNION</summary>
  
 ## Struct
-###Định nghĩa
+### Định nghĩa
 struct là 1 tập hợp các phần tử dữ liệu cùng kiểu hoặc khác kiểu được gộp chung thành 1 nhóm. Các phần tử này được gọi là thành viên của struct.
-###Cú pháp
+	
+### Cú pháp
 ```
 struct <Tên struct>
 {
@@ -354,47 +355,32 @@ struct <Tên struct>
 …
 };
 ```
-###Sử dụng Struct
+### Sử dụng Struct
 - Để truy cập vào các thành viên của struct sử dụng toán tử dấu chấm (.) đặt giữa tên biến kiểu struct và tên thành viên của struct cần truy cập.
 
 - 1 biến thuộc kiểu struct cũng có thể trở thành tham số của 1 hàm.
 
 - Có thể truy cập thành phần của struct thông qua biến con trỏ.
 ```
-#include <iostream>
-#include <string>
-using namespace std;
-
-/*Declare a struct called Subject*/
-struct Subject
-{
-	string	m_name_subject;			//delare member types
-	string	m_pre_subject;
-	int		m_hour_per_week;
-	string	m_trainer;
-};
-
-void PrintSubjectInformation(Subject object)
-{
-	cout << object.m_name_subject		<< endl;
-	cout << object.m_trainer		<< endl;
-	cout << object.m_hour_per_week	<< endl;
-	cout << object.m_pre_subject		<< endl;
-}
-
-int main()
-{
-	Subject subject;
-
-	// Access the member of struct Subject through subject
-	subject.m_name_subject	= "Game Programming";
-	subject.m_pre_subject	= "Basic Programming";
-	subject.m_hour_per_week = 4;
-	subject.m_trainer		= "Vu Quang Huy";
-
-	PrintSubjectInformation(subject);
-
-	return 0;
+#include<stdio.h>
+#include <string.h>
+ 
+struct employee {
+    int id;
+    char name[50];
+    float salary;
+} e1; // khai bao bien e1
+ 
+int main() {
+    // luu tru thong tin employee
+    e1.id = 17;
+    strcpy(e1.name, "Vinh Tran"); // sao chep string thanh mang char
+    e1.salary = 1000;
+    // hien thi thong tin employee ra man hinh
+    printf("employee 1 id : %d\n", e1.id);
+    printf("employee 1 name : %s\n", e1.name);
+    printf("employee 1 salary : %f\n", e1.salary);
+    return 0;
 }
 ```
  ### Size của Struct
@@ -477,9 +463,9 @@ uint16_t có size 2 byte => arr3[7] cần 2*7 = 14 byte để lưu
 ==> tổng size = 12 byte + 16 byte + 16 byte = 44 byte
 
 ## Union  
-###Định nghĩa
+### Định nghĩa
 Cũng giống như struct, union là 1 tập hợp các phần tử dữ liệu cùng kiểu hoặc khác kiểu được gộp chung thành 1 nhóm. Các phần tử này được gọi là thành viên của union.
-###Cú pháp
+### Cú pháp
 ```
 union <Tên struct>
 {
@@ -499,42 +485,35 @@ typedef union
     uint8_t test2[2]; // 2 byte
 }data_union;
  ```
-###Sử dụng Union
+### Sử dụng Union
 - Để truy cập vào các thành viên của union sử dụng toán tử dấu chấm (.) đặt giữa tên biến kiểu union và tên thành viên của union cần truy cập.
 
 - 1 biến thuộc kiểu union cũng có thể trở thành tham số của 1 hàm.
 
 - Có thể truy cập thành viên của union thông qua biến con trỏ.
 ```
-#include <iostream>
-
-using namespace std;
-
-/* Declare */
-union Post
-{
-	int		m_iValue;
-	float		m_fValue;			//delare member types
-	long		m_lValue;
-};
-
-void PrintSubjectInformation(Post post)
-{
-	cout << post.m_iValue	<< endl;
-	cout << post.m_fValue	<< endl;
-	cout << post.m_lValue	<< endl;
-}
-
-int main()
-{
-	Post post;
-	post.m_iValue		= 169;			// Access the member of union
-	post.m_fValue		= 39.01;
-	post.m_lValue		= 123;
-
-	PrintSubjectInformation(post);
-
-	return 0;
+#include <stdio.h>
+#include <string.h>
+ 
+/**
+ * dinh nghia union Employee
+ */
+union Employee {
+    int id;
+    char name[50];
+} e1; // khai bao bien e1 cho Employee
+ 
+/**
+ * ham main
+ */
+int main() {
+    // luu tru thong tin employee e1
+    e1.id = 101;
+    strcpy(e1.name, "Vinh Tran"); // chuyen doi chuoi thanh mang char
+    // hien thi thong tin e1 ra man hinh
+    printf("employee e1 id: %d\n", e1.id);
+    printf("employee e1 name: %s\n", e1.name);
+    return 0;
 }
 ```
 ## So sánh Struct - Union
