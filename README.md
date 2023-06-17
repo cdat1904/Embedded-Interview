@@ -940,3 +940,37 @@ Khi đang lập trình trong một file A bạn include 2 file B và C, nhưng 2
 - Template giúp người lập trình định nghĩa tổng quát cho hàm và lớp thay vì phải nạp chồng (overloading) cho từng hàm hay phương thức với những kiểu dữ liệu khác nhau.
 
 </details>
+
+<details>
+<summary>VECTOR</summary>
+
+Giống như là mảng (array), vector trong C++ là một đối tượng dùng để chứa các đối tượng khác, và các đối tượng được chứa này cũng được lưu trữ một cách liên tiếp 
+trong vector.
+Tuy nhiên, nếu như số lượng phần tử (size) của một mảng là cố định, thì ở vector, nó hoàn toàn có thể thay đổi trong suốt quá trình làm việc của chương trình
+
+## Modifiers
+
+1. `push_back()`: Hàm đẩy một phần tử vào vị trí sau cùng của vector. Nếu kiểu của đối tượng được truyền dưới dạng tham số trong push_back() không giống với kiểu 
+của vector thì sẽ bị ném ra.
+
+`ten-vector.push_back(ten-cua-phan-tu);`
+
+2. assign(): Nó gán một giá trị mới cho các phần tử vector bằng cách thay thế các giá trị cũ.
+   
+`ten-vector.assign(int size, int value);`
+
+3. `pop_back()`: Hàm pop_back () được sử dụng để xóa đi phần tử cuối cùng mộtvector.
+
+4. `insert()`: Hàm này chèn các phần tử mới vào trước phần tử trước vị trí được trỏ bởi vòng lặp. Chúng ta cũng có thể chuyển một số đối số thứ ba, đếm số lần phần tử được chèn vào trước vị trí được trỏ.
+   
+5. `erase()`: Hàm được sử dụng để xóa các phần tử tùy theo vị trí vùng chứa
+  
+6. `emplace()`: Nó mở rộng vùng chứa bằng cách chèn phần tử mới vào
+    
+7.`emplace_back()`: Nó được sử dụng để chèn một phần tử mới vào vùng chứa vector, phần tử mới sẽ được thêm vào cuối vector
+
+8. `swap()`: Hàm được sử dụng để hoán đổi nội dung của một vector này với một vector khác cùng kiểu. Kích thước có thể khác nhau.
+    
+9.`clear()`: Hàm được sử dụng để loại bỏ tất cả các phần tử của vùng chứa vector
+ 
+</details>
