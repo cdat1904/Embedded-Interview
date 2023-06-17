@@ -933,6 +933,54 @@ Khi đang lập trình trong một file A bạn include 2 file B và C, nhưng 2
 
 `Namespace` là từ khóa trong C++ được sử dụng để định nghĩa một phạm vi nhằm mục đích phân biệt các hàm, lớp, biến, ... cùng tên trong các thư viện khác nhau.
 
+## Cú pháp
+```
+namespace ten_namespace{
+    //code
+}
+```
+
+fileB.hpp:
+```
+#include <iostream>
+
+using namespace std;
+
+namespace fileB{
+    void function(() { cout << “function in fileB running.” << endl; }
+}
+```
+fileC.hpp:
+```
+#include <iostream>
+
+using namespace std;
+
+namespace fileC{
+    void function(() { cout << “function in fileC running.” endl; }
+}
+```
+fileA.hpp:
+```
+#include <iostream>
+#incldue “fileB.hpp”
+#include “fileC.hpp”
+
+using namespace std;
+
+int main() {
+    fileB::function();
+    fileC::function();
+    
+    return 0;
+}
+```
+Kết quả:
+```
+function fileB running.
+function fileC running.
+```
+
 ### TEMPLATE
 
 - Template (khuôn mẫu) là một từ khóa trong C++, và là một kiểu dữ liệu trừu tượng tổng quát hóa cho các kiểu dữ liệu int, float, double, bool...
