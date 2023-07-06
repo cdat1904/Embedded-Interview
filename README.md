@@ -757,7 +757,119 @@ int main()
 }
  ```
 </details>
+<details>
+<summary>CONSTRUCTOR</summary>
 
+# Định nghĩa
+	
+`Constructor` trong C++ là một phương thức đặc biệt được gọi tự động tại thời điểm tạo đối tượng. Nó được sử dụng để khởi tạo các thành viên dữ liệu của các đối tượng mới. Constructor trong C++ có cùng tên với lớp hoặc struct.
+
+Constructor trong C++ có thể được chia thành 2 loại:
+
+- `Constructor mặc định`.
+- `Constructor có tham số`.
+  
+# Constructor mặc định
+
+Một `constructor không có đối số` được gọi là `constructor mặc định`. Nó được gọi tại thời điểm tạo đối tượng.
+
+Ví dụ về Constructor mặc định trong C++:
+
+```
+#include <iostream>
+ 
+using namespace std;
+ 
+class Employee {
+public:
+    Employee() {
+        cout << "Constructor mac dinh duoc goi..." << endl;
+    }
+};
+ 
+int main(void) {
+    Employee e1; //tao doi tuong Employee
+    Employee e2;
+    return 0;
+}
+```
+Kết quả :
+
+Constructor mac dinh duoc goi...
+Constructor mac dinh duoc goi...
+
+# Constructor có tham số
+
+Một constructor có tham số được gọi là constructor tham số hóa. Nó được sử dụng để cung cấp các giá trị khác nhau cho các đối tượng riêng biệt.
+
+Ví dụ về Constructor tham số trong C++:
+
+```
+#include <iostream>
+ 
+using namespace std;
+ 
+class Employee {
+public:
+    int id; // data member (bien instance)
+    string name; // data member(bien instance)
+    float salary;
+    Employee(int i, string n, float s)
+    {
+        id = i;
+        name = n;
+        salary = s;
+    }
+    void display() { cout << id << "  " << name << "  " << salary << endl; }
+};
+ 
+int main(void) {
+    Employee e1 = Employee(101, "Phan Van Vinh", 500); // tao doi tuong Employee
+    Employee e2 = Employee(102, "Dao Van Hoa", 1000);
+    e1.display();
+    e2.display();
+    return 0;
+}
+
+Kết quả :
+101  Phan Van Vinh  500
+102  Dao Van Hoa  1000
+```
+
+# Khi nào sử dụng Constructor ?
+
+`Constructor` được sử dụng khi bạn tạo một đối tượng mới của một lớp. Nó được gọi tự động khi khởi tạo một đối tượng và thường được sử dụng để thiết lập các giá trị ban đầu của đối tượng.
+
+Một số trường hợp bạn có thể sử dụng constructor bao gồm:
+
+1.Khởi tạo các biến thành viên của lớp.
+2.Thực hiện các thao tác khởi tạo phức tạp như kết nối đến cơ sở dữ liệu.
+3.Thiết lập các giá trị mặc định cho các thuộc tính của đối tượng.
+4.Thiết lập các tham số cần thiết để tạo ra một đối tượng hợp lệ.
+Constructor có thể nhận các tham số và sử dụng chúng để thiết lập giá trị ban đầu của đối tượng. Bạn cũng có thể tạo nhiều hơn một constructor trong cùng một lớp, được gọi là `constructor overloading`, để hỗ trợ việc khởi tạo theo nhiều cách khác nhau.
+
+Về cú pháp, constructor có cùng tên với lớp và không có kiểu trả về. Điều này cho phép chúng được gọi tự động khi một đối tượng mới được tạo.
+
+Ví dụ :
+```
+public class Circle {
+    private double radius;
+
+    // Constructor không tham số
+    public Circle() {
+        this.radius = 1.0;
+    }
+
+    // Constructor nhận tham số
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    // ...
+}
+
+```
+</details>
 <details>
 <summary>CLASS C++</summary>
 	
@@ -1021,4 +1133,148 @@ của vector thì sẽ bị ném ra.
     
 9.`clear()`: Hàm được sử dụng để loại bỏ tất cả các phần tử của vùng chứa vector
  
+</details>
+
+<details>
+<summary>LIST</summary>
+	
+Trong C++,`list` là một container trong STL (Standard Template Library) dùng để lưu trữ và quản lý các phần tử liên tục. Nó có thể chứa các kiểu dữ liệu khác nhau và cung cấp các hàm tiên tiến để thao tác với các phần tử trong list.
+
+Cú pháp khai báo:
+```
+list<T> variable_name;
+```
+Trong đó, T là kiểu dữ liệu của các phần tử trong list.
+
+Ví dụ:
+```
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main() {
+    list<int> numbers;
+    numbers.push_back(5);
+    numbers.push_back(3);
+    numbers.push_back(8);
+    numbers.push_back(1);
+
+    cout << "Elements of the list: ";
+    for (auto i : numbers) {
+        cout << i << " ";
+    }
+    cout << endl;
+
+    numbers.sort();
+    cout << "Sorted list: ";
+    for (auto i : numbers) {
+        cout << i << " ";
+    }
+    cout << endl;
+    return 0;
+}
+
+Kết quả:
+Elements of the list: 5 3 8 1
+Sorted list: 1 3 5 8
+```
+# Một số ví dụ 
+
+Ví dụ 1: Tạo và thêm phần tử vào list:
+```
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main() {
+    list<int> numbers;
+    numbers.push_back(5);
+    numbers.push_back(3);
+    numbers.push_back(8);
+    numbers.push_back(1);
+
+    cout << "Elements of the list: ";
+    for (auto i : numbers) {
+        cout << i << " ";
+    }
+    cout << endl;
+    return 0;
+}
+```
+
+Ví dụ 2: Xóa phần tử từ list
+```
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main() {
+    list<int> numbers;
+    numbers.push_back(5);
+    numbers.push_back(3);
+    numbers.push_back(8);
+    numbers.push_back(1);
+
+    cout << "Elements of the list before deletion: ";
+    for (auto i : numbers) {
+        cout << i << " ";
+    }
+    cout << endl;
+
+    // Xóa phần tử có giá trị 3 từ list
+    numbers.remove(3);
+
+    cout << "Elements of the list after deletion: ";
+    for (auto i : numbers) {
+        cout << i << " ";
+    }
+    cout << endl;
+    return 0;
+}
+```
+Ví dụ 3: Sắp xếp và in ra list:
+```
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main() {
+    list<int> numbers;
+    numbers.push_back(5);
+    numbers.push_back(3);
+    numbers.push_back(8);
+    numbers.push_back(1);
+
+    cout << "Elements of the list before sorting: ";
+    for (auto i : numbers) {
+        cout << i << " ";
+    }
+    cout << endl;
+
+    numbers.sort();
+
+    cout << "Elements of the list after sorting: ";
+    for (auto i : numbers) {
+        cout << i << " ";
+    }
+    cout << endl;
+    return 0;
+}
+```
+
+# Các phương thức phổ biến 
+
+Các phương thức phổ biến của list bao gồm:
+
+- push_back(value): Thêm phần tử vào cuối danh sách.
+- push_front(value): Thêm phần tử vào đầu danh sách.
+- pop_back(): Xóa phần tử cuối cùng khỏi danh sách.
+- pop_front(): Xóa phần tử đầu tiên khỏi danh sách.
+- insert(position, value): Thêm phần tử vào danh sách tại vị trí được chỉ định.
+- erase(position): Xóa phần tử tại vị trí được chỉ định khỏi danh sách.
+- size(): Trả về số lượng phần tử trong danh sách.
+- begin(): Trả về một con trỏ đến phần tử đầu tiên trong danh sách.
+- end(): Trả về một con trỏ đến phần tử cuối cùng trong danh sách.
+
+
 </details>
