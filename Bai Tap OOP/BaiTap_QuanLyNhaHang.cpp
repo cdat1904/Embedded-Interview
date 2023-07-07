@@ -5,6 +5,12 @@
 
 using namespace std;
 
+typedef enum{
+    KET_THUC,
+    QUAN_LY,
+    NHAN_VIEN
+}TypeOptions;
+
 class MonAn
 {
     private:
@@ -446,22 +452,22 @@ void NhanVien::thanhToan(){
 int main(int argc, char const *argv[]){
 
     cout << "========== LUA CHON ===============";
-    cout << "1. Quan Ly " << endl;
+    cout << " 1. Quan Ly " << endl;
     cout << " 2. Nhan vien" << endl;
     cout << " 0. Ket thuc" << endl;
     int key;
     cout << "====================================";
     cout <<"Nhap lua chon : ";
     cin >> key;
-    switch (key)
+    switch ((TypeOptions)key)
     {
-    case 1:
+    case QUAN_LY:
         QuanLy();
         break;
-    case 2:
+    case NHAN_VIEN:
         NhanVien();
         break;
-    case 0:
+    case KET_THUC:
         cout << "Ket thuc chuong trinh ";
         break;
     
