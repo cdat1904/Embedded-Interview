@@ -200,12 +200,26 @@ for (auto item : item.get_list_Item())
             //if paid, set status AVAILABLE for the table and delete list of order
             if(isPaid == PAID)
             {
+                //Update status
                 auto list_Table = manager.getList_Table();
                 auto tableIterator = list_Table.begin();
                 std::advance(tableIterator, tableNumber - 1);
                 tableIterator->setStatus(AVAILABLE);
 
-                manager.getList_Table.[tableNumber - 1].deleteItemList();
+                //Update List
+                list<Table> tableList = manager.getList_Table();
+                int tableIndex = tableNumber - 1;
+
+                auto it = std::next(tableList.begin(), tableIndex);
+
+                if (it != tableList.end()) {
+                tableList.erase(it);
+
+                // Update list
+                manager.setList_Table(tableList);
+                } else {
+                     cout << "Invalid !!!" << endl; //Wrong case
+                }
             }
             return;
             
