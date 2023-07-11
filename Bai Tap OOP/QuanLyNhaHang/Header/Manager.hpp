@@ -28,5 +28,6 @@ class Manager
 
        list<Item> getList_Item();
        list<Table> getList_Table();
+       void setList_Table(const list<Table>& newTableList);
        
 };
