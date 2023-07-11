@@ -19,16 +19,16 @@ using namespace std;
 
 #define HEADER_LIST_ITEM \
     do { \
-        std::cout << std::setw(5) << "ID" << std::setw(15) << "Name" << std::setw(15) << "Unit price"; \
-        std::cout << std::setw(10) << "Quantity" << std::setw(10) << "Total" << std::endl; \
+        cout << setw(5) << "ID" << setw(15) << "Name" << setw(15) << "Unit price"; \
+        cout << setw(10) << "Quantity" << setw(10) << "Total" << endl; \
     } while (false)
 
 #define INFO_ITEM(d_item) \
     do \
     { \
-        std::cout << std::setw(5) << (int)d_item.first.getId() << std::setw(15) << d_item.first.getName(); \
-        std::cout << std::setw(15) << d_item.first.getPrice() << std::setw(10) << d_item.second << std::endl; \
-        std::cout << std::setw(10) << (d_item.first.getPrice() * d_item.second) << std::endl; \
+        cout << setw(5) << (int)d_item.first.getId() << setw(15) << d_item.first.getName(); \
+        cout << setw(15) << d_item.first.getPrice() << setw(10) << d_item.second << endl; \
+        cout << setw(10) << (d_item.first.getPrice() * d_item.second) << endl; \
     } while (false)
    
 //table number begins from 1
