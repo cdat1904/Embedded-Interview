@@ -142,13 +142,36 @@ void showListItem()
         INFO_ITEM(item);
     }
 }
-
+/*
+  * Method: getList_Item
+  * Class: Manager
+  * Description: Get data from list_Item
+  * Input:
+  * Output:
+*/
 list<Item> Manager::getList_Item()
 {
     return this->_list_Item;
 }
-   
+/*
+  * Method: getList_Table
+  * Class: Manager
+  * Description: Get data from list_Table
+  * Input:
+  * Output:
+*/
 list<Table> Manager::getList_Table()
 {
     return this->_list_Table;
+}
+/*
+  * Method: set_new_list_Table
+  * Class: Manager
+  * Description: set new list after update list
+  * Input:
+  * Output:
+*/
+void Manager::set_new_list_Table(const list<Table>& new_list)
+{
+    return new_list = _list_Item;
 }
