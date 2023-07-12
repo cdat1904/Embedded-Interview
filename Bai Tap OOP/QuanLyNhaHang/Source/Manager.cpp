@@ -107,25 +107,22 @@ void Manager::changeItem(const int id)
 */
 void Manager::deleteItem(const int id)
 {
-    Manager manager;
-    list<Item> itemList = manager.getList_Item();
-
     int index = 0;
-    for (auto & item : Manager::_list_Item)
+    for (auto it = _list_Item.begin(); it != _list_Item.end(); ++it)
     {
-        if (item.getId() == id)
+        if (it->getId() == id)
         {
             cout << "Deleting this item..." << endl;
-            this->_list_Item.erase(itemList.begin());
-            cout << "Deleted !!";
+            _list_Item.erase(it);
+            cout << "Deleted !!" << endl;
             return;
-
         }
         ++index;
     }
-    //if not
+    // if not found
     cout << "ID not found !!" << endl; 
 }
+
 
 /*
   * Method: showListItem
