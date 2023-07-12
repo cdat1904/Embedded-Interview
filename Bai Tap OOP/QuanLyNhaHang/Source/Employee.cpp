@@ -169,15 +169,15 @@ void Employee::showBill(int tableNumber)
             //display the list of the ordered item with each item's total price
             HEADER_LIST_ITEM;
             auto itemList = manager.getList_Item();
-auto itemIterator = itemList.begin();
+            auto itemIterator = itemList.begin();
 
-for (auto item : item.get_list_Item())
-{
-    std::advance(itemIterator, item.first - 1);
-    double itemTotalCost = itemIterator->getPrice() * item.second.second;
-    totalBill += itemTotalCost;
-    INFO_LIST_ITEM(item);
-}
+            for (auto orderedItem : item.get_list_Item()) {
+            std::advance(itemIterator, orderedItem.first - 1);
+            double itemTotalCost = itemIterator->getPrice() * orderedItem.second.second;
+            totalBill += itemTotalCost;
+            INFO_LIST_ITEM(itemIterator);   
+            }  
+
 
 
             //display the total cost of the table
