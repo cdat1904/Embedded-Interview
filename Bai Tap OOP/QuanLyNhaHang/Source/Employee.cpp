@@ -229,3 +229,74 @@ void Employee::showBill(int tableNumber)
     //if cannot find the table 
     cout << "Invalid table number" << endl;
 }
+
+/* 
+  /*
+   * Method: chekOut
+   * Class: Employee
+   * Access: public
+   * Description: check out
+   * Input: 
+       <1> table number - int
+   * Output:
+*/
+*/
+void Employee::checkOut(int tableNumber)
+{
+    Manager manager;
+    // go through each element in the list of table
+    for (auto item : manager.getList_Table())
+    {
+        if (item.getTableNumber() == tableNumber)
+        {
+            //Check if this table is ordered yet
+            if(item.get_list_Item().size() == EMPTY) {
+                cout << "The table has not been ordered yet!" << endl;
+                return;
+            }
+            int isPaid = UNPAID;
+            double totalBill = 0;
+
+            // display the list of the ordered item with each item's total price
+            HEADER_LIST_ITEM;
+            int currentIndex = 0;
+            for (auto it = item.get_list_Item().begin(); it != item.get_list_Item().end(); ++it)
+            {
+                if (currentIndex == it->first - 1)
+                {
+                    Item& orderedItem = *it;
+                    double itemTotalCost = orderedItem.getPrice() * orderedItem.second.second;
+                    totalBill += itemTotalCost;
+                    INFO_LIST_ITEM(itemTotalCost);
+                }
+                currentIndex++;
+            }
+
+            // display the total cost of the table
+            do
+            {
+                cout << "______________________TOTAL COST: " << totalBill << endl;
+                cout << "1: Paid\n2: Unpaid\n";
+                cout << "--> Your select: ";
+                cin >> isPaid;
+                cin.ignore(256, '\n');
+                // select to paid or unpaid
+                if(isPaid != UNPAID && isPaid != PAID)
+                {
+                    cout << "Invalid selection! Please select again." << endl;
+                }
+            } while (isPaid != UNPAID && isPaid != PAID);
+
+            // if paid, set status "AVAILABLE" for the table and delete the list of the ordered item of the table
+            if(isPaid == PAID)
+            {
+                manager.getList_Table().at(tableNumber - 1).setStatus(AVAILABLE);
+                manager.getList_Table().at(tableNumber - 1).deleteListOrderedItem();
+            }
+            return;
+        }
+    }
+    // when table number is not valid
+    cout << "Invalid table number!" << endl;
+}
+
